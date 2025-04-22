@@ -1,0 +1,40 @@
+       IDENTIFICATION DIVISION.
+       PROGRAM-ID. PAGAMENTO-CONTAS.
+       ENVIRONMENT DIVISION.
+       DATA DIVISION.
+       WORKING-STORAGE SECTION.
+       01 SALDO-INICIAL       PIC 9(6)V9(2).
+       01 PAGAMENTO          PIC 9(6)V9(2).
+       01 TOTAL-PAGAMENTOS   PIC 9(6)V9(2) VALUE ZEROS.
+       01 SALDO-FINAL        PIC 9(6)V9(2).
+       01 WS-FIM             PIC X VALUE 'N'.
+       01 SALDO-INICIAL-FMT  PIC ZZZZ9.99.
+       01 TOTAL-PAGAMENTOS-FMT PIC ZZZZ9.99.
+       01 SALDO-FINAL-FMT    PIC ZZZZ9.99.
+
+       PROCEDURE DIVISION.
+       INICIO.
+           DISPLAY 'Informe o saldo inicial: '.
+           ACCEPT SALDO-INICIAL.
+
+           PERFORM PROCESSAR-PAGAMENTOS UNTIL WS-FIM = 'S'.
+
+           COMPUTE SALDO-FINAL = SALDO-INICIAL - TOTAL-PAGAMENTOS.
+
+           MOVE SALDO-INICIAL TO SALDO-INICIAL-FMT.
+           MOVE TOTAL-PAGAMENTOS TO TOTAL-PAGAMENTOS-FMT.
+           MOVE SALDO-FINAL TO SALDO-FINAL-FMT.
+
+           DISPLAY 'Saldo Inicial : ' SALDO-INICIAL-FMT.
+           DISPLAY 'Pagamentos : ' TOTAL-PAGAMENTOS-FMT.
+           DISPLAY 'Saldo Final : ' SALDO-FINAL-FMT.
+
+           STOP RUN.
+
+       PROCESSAR-PAGAMENTOS.
+           DISPLAY 'Informe o valor do pagamento (0 para sair): '.
+           ACCEPT PAGAMENTO.
+           IF PAGAMENTO = 0 THEN
+               MOVE 'S' TO WS-FIM
+           ELSE
+               ADD PAGAMENTO TO TOTAL-PAGAMENTOS.
