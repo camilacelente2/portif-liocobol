@@ -1,0 +1,37 @@
+IDENTIFICATION DIVISION.
+       PROGRAM-ID. REPETICOES.
+
+       ENVIRONMENT DIVISION.
+       CONFIGURATION SECTION.
+       SPECIAL-NAMES.
+           DECIMAL-POINT IS COMMA.
+
+       DATA DIVISION.
+       WORKING-STORAGE SECTION.
+           01 WRK-CAPITAL      PIC 9(04)V99.
+           01 WRK-TAXA         PIC 9(02)V99.
+           01 WRK-MESES        PIC 9(03).
+           01 WRK-CONTADOR     PIC 9(03) VALUE 0.
+       PROCEDURE DIVISION.
+           DISPLAY "CAPITAL DE ENTRADA "
+              ACCEPT WRK-CAPITAL.
+           DISPLAY "TAXA DE RENTABILIDADE AO MES ".
+              ACCEPT WRK-TAXA
+           DISPLAY "PERIODO EM MES".
+              ACCEPT WRK-MESES
+
+
+           PERFORM VARYING WRK-CONTADOR FROM 1 BY 1 UNTIL
+                           WRK-CONTADOR GREATER WRK-MESES
+
+           COMPUTE WRK-CAPITAL = WRK-CAPITAL +
+                                 (WRK-CAPITAL * WRK-TAXA)
+
+
+           END-PERFORM.
+
+           DISPLAY WRK-CAPITAL.
+
+
+
+           STOP RUN.
