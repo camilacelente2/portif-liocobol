@@ -1,0 +1,41 @@
+IDENTIFICATION DIVISION.
+       PROGRAM-ID. MATRIZ.
+       DATA DIVISION.
+       WORKING-STORAGE SECTION.
+       01  WRK-MATRIZ.
+           05 WRK-ALUNO         OCCURS 02 TIMES.
+              10 WRK-NOTA       OCCURS 03 TIMES.
+                 15 WRK-DADOS   PIC X(15).
+
+       01  WRK-IN1              PIC 9.
+       01  WRK-IN2              PIC 9.
+       01  WRK-MEDIA            PIC 9(02)V99.
+       01  WRK-BIMESTRE         PIC 9(02)V99.
+       PROCEDURE DIVISION.
+
+       PERFORM VARYING WRK-IN1 FROM 1 BY 1 UNTIL WRK-IN1 > 2
+           DISPLAY "DIGITE O NOME DO ALUNO "
+           ACCEPT  WRK-DADOS(WRK-IN1,1)
+           DISPLAY "NOTA 1 "
+           ACCEPT  WRK-DADOS(WRK-IN1,2)
+           DISPLAY "NOTA 2 "
+           ACCEPT  WRK-DADOS(WRK-IN1,3)
+       END-PERFORM.
+
+       PERFORM VARYING WRK-IN1 FROM 1 BY 1 UNTIL WRK-IN1 > 2
+           DISPLAY "ALUNO = " WRK-DADOS(WRK-IN1,1)
+           MOVE 0 TO WRK-MEDIA
+           PERFORM VARYING WRK-IN2 FROM 2 BY 2 UNTIL WRK-IN2 > 3
+             DISPLAY "NOTA =  " WRK-DADOS(WRK-IN1, WRK-IN2)
+             MOVE WRK-DADOS(WRK-IN1 , WRK-IN2) TO WRK-BIMESTRE
+           COMPUTE WRK-MEDIA = WRK-MEDIA + WRK-BIMESTRE
+
+             END-PERFORM
+           COMPUTE WRK-MEDIA = WRK-MEDIA / 2
+            DISPLAY "SUA MEDIA = " WRK-MEDIA
+             DISPLAY "------------"
+             END-PERFORM.
+
+
+
+       STOP RUN.
