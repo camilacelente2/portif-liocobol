@@ -1,0 +1,22 @@
+IDENTIFICATION DIVISION.
+       PROGRAM-ID. VARIAVEL.
+       DATA DIVISION.
+       WORKING-STORAGE SECTION.
+           01 VAR-NOME    PIC X(30) VALUE SPACES.
+           01 VAR-N1      PIC 9(02) VALUE ZEROS.
+           01 VAR-N2      PIC 9(02) VALUE ZEROS.
+           01 VAR-MEDIA   PIC 9(02) VALUE ZEROS.
+
+       PROCEDURE DIVISION.
+           DISPLAY "QUAL NOME "
+              ACCEPT VAR-NOME.
+           DISPLAY "QUAL A PRIMEIRA NOTA ".
+              ACCEPT VAR-N1.
+           DISPLAY "QUAL A SEGUNDA NOTA ".
+             ACCEPT VAR-N2.
+
+           COMPUTE VAR-MEDIA = ( VAR-N1 + VAR-N2 ) / 2.
+
+           DISPLAY "MEDIA FINAL   " VAR-MEDIA.
+
+            STOP RUN.
