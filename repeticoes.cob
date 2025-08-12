@@ -1,0 +1,28 @@
+IDENTIFICATION DIVISION.
+       PROGRAM-ID. REPETICOES.
+       DATA DIVISION.
+       WORKING-STORAGE SECTION.
+           01 WRK-CAPITAL      PIC 9(04)V99.
+           01 WRK-TAXA         PIC 9(02)V99.
+           01 WRK-MESES        PIC 9(03).
+           01 WRK-CONTADOR     PIC 9(03) VALUE 1.
+       PROCEDURE DIVISION.
+           DISPLAY "CAPITAL DE ENTRADA "
+              ACCEPT WRK-CAPITAL.
+           DISPLAY "TAXA DE RENTABILIDADE AO MES ".
+              ACCEPT WRK-TAXA
+           DISPLAY "PERIODO EM MES".
+              ACCEPT WRK-MESES
+
+           PERFORM UNTIL WRK-CONTADOR GREATER WRK-MESES
+           COMPUTE WRK-CAPITAL = WRK-CAPITAL +
+                                 (WRK-CAPITAL * WRK-TAXA)
+           ADD 1 TO WRK-CONTADOR
+
+           END-PERFORM.
+
+           DISPLAY WRK-CAPITAL.
+
+
+
+           STOP RUN.
